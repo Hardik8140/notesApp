@@ -9,7 +9,7 @@ const login = () => {
   const handleSubmit = () => {
     const payload = { email, pass };
 
-    fetch("http://localhost:8080/users/login", {
+    fetch("https://cute-gold-dugong-tutu.cyclic.cloud/users/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

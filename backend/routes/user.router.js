@@ -13,10 +13,10 @@ userRouter.post("/register", async (req, res) => {
     bcrypt.hash(pass, 5, async (err, hash) => {
       const user = new UserModel({ username, email, pass: hash });
       await user.save();
-      res.status(200).send({ message: "User registration successful" });
+      res.status(200).json({ message: "User registration successful" });
     });
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 
@@ -37,20 +37,20 @@ userRouter.post("/login", async (req, res) => {
             "hardik",
             { expiresIn: "14m" }
           );
-          res.status(200).send({
+          res.status(200).json({
             message: "Login Successful!!",
             token: token,
             refToken: refToken,
           });
         } else {
-          res.status(401).send({ error: "invalid credentials" });
+          res.status(401).json({ error: "invalid credentials" });
         }
       });
     } else {
-      res.status(200).send({ error: "invalid credentials" });
+      res.status(200).json({ error: "invalid credentials" });
     }
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 
@@ -64,9 +64,9 @@ userRouter.get("/logout", async (req, res) => {
     });
 
     await blackListToken.save();
-    res.status(200).send({ msg: "User has been logout" });
+    res.status(200).json({ msg: "User has been logout" });
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 module.exports = { userRouter };

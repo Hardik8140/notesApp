@@ -8,7 +8,7 @@ const Notes = () => {
     const newNote = { title, content };
     // const token = localStorage.getItem("token");
 
-    fetch("http://localhost:8080/notes/add", {
+    fetch("https://cute-gold-dugong-tutu.cyclic.cloud/notes/add", {
       method: "POST",
       headers: {
         Authorization: localStorage.getItem("token"),

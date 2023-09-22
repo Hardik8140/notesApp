@@ -8,7 +8,7 @@ const signup = () => {
   const handleSubmit = () => {
     const payload = { username, email, pass };
 
-    fetch("http://localhost:8080/users/register", {
+    fetch("https://cute-gold-dugong-tutu.cyclic.cloud/users/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

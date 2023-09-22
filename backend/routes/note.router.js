@@ -11,18 +11,18 @@ noteRouter.post("/add", async (req, res) => {
   try {
     const note = new NoteModel(payload);
     await note.save();
-    res.status(200).send({ message: "New note created" });
+    res.status(200).json({ message: "New note created" });
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 
 noteRouter.get("/", async (req, res) => {
   try {
     const note = await NoteModel.find({ username: req.body.username });
-    res.status(200).send(note);
+    res.status(200).json(note);
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 
@@ -39,12 +39,12 @@ noteRouter.patch("/update/:id", async (req, res) => {
     );
 
     if (!updatesNote) {
-      res.status(404).send({ error: "Note not Found" });
+      res.status(404).json({ error: "Note not Found" });
     }
 
-    res.status(200).send({ message: "Note update successfully!!" });
+    res.status(200).json({ message: "Note update successfully!!" });
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 
@@ -59,12 +59,12 @@ noteRouter.delete("/delete/:id", async (req, res) => {
     });
 
     if (!deleteNote) {
-      res.status(404).send({ error: "Note not deleted" });
+      res.status(404).json({ error: "Note not deleted" });
     }
 
-    res.status(200).send({ message: "Note deleted successfully!!" });
+    res.status(200).json({ message: "Note deleted successfully!!" });
   } catch (error) {
-    res.status(400).send({ error: error });
+    res.status(400).json({ error: error });
   }
 });
 

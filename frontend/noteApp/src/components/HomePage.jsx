@@ -11,7 +11,7 @@ const HomePage = () => {
   }, []);
 
   const getNotes = () => {
-    fetch("http://localhost:8080/notes/", {
+    fetch("https://cute-gold-dugong-tutu.cyclic.cloud/notes/", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -26,7 +26,7 @@ const HomePage = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/notes/delete/${id}`, {
+    fetch(`https://cute-gold-dugong-tutu.cyclic.cloud/notes/delete/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: localStorage.getItem("token"),
